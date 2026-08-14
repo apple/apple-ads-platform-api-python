@@ -1,0 +1,53 @@
+[project]
+name = "apple-ads-platform"
+version = "0.0.0"
+description = "Python client library for the Apple Ads Platform API"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "urllib3 (>=2.7.0,<3.0.0)",
+    "python-dateutil >=2.8.2",
+    "pydantic >=2.11",
+    "typing-extensions >=4.7.1",
+    "pyjwt (>=2.13.0)",
+    "cryptography (>=50.0)",
+]
+
+[tool.poetry]
+name = "apple-ads-platform"
+version = "0.0.0"
+description = "Python client library for the Apple Ads Platform API"
+authors = []
+
+[tool.poetry.group.dev.dependencies]
+pytest = ">=8.0.0"
+pytest-cov = ">=4.1.0"
+ruff = ">=0.2.0"
+mypy = ">=1.8.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+select = [
+    "E",
+    "W",
+    "F",
+    "I",
+    "B",
+    "C4",
+    "UP",
+]
+
+[tool.mypy]
+python_version = "3.12"
+warn_return_any = true
+warn_unused_configs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]

@@ -1,0 +1,54 @@
+name: Publish to PyPI
+
+# Publishes this package to PyPI whenever a GitHub Release is published.
+# This is an on-demand workflow: nothing is published on every push, only
+# when someone explicitly cuts a release. Releases are required to be cut
+# from the main branch so that every published version traces back to a
+# single, known point in history.
+#
+# Authentication uses PyPI's trusted publishing (OIDC): the job requests a
+# short-lived identity token (via `id-token: write`) that the publish action
+# exchanges for a temporary upload credential, so no PyPI API token needs to
+# be stored as a repository secret. For this to succeed, the project on PyPI
+# must already have a trusted publisher configured that matches this
+# repository, this workflow file, and the "pypi" environment name below.
+
+permissions:
+  contents: read
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    name: Build and publish
+    runs-on: ubuntu-latest
+    # Skip pre-releases and anything not cut from main, so only releases
+    # built from a known, reviewed point in history reach PyPI.
+    if: >-
+      !github.event.release.prerelease &&
+      github.event.release.target_commitish == 'main'
+    environment: pypi
+    permissions:
+      id-token: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+
+      - name: Install Poetry
+        run: pipx install poetry
+
+      - name: Set package version
+        run: poetry version "$(scripts/lib_version.sh)"
+
+      - name: Build sdist and wheel
+        run: poetry build
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@dc37677b2e1c63e2034f94d8a5b11f265b73ba33 # v1.14.2

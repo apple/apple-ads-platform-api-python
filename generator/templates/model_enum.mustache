@@ -1,0 +1,57 @@
+from __future__ import annotations
+import json
+from enum import Enum
+{{#vendorExtensions.x-py-other-imports}}
+{{{.}}}
+{{/vendorExtensions.x-py-other-imports}}
+from typing_extensions import Self
+
+
+class {{classname}}({{vendorExtensions.x-py-enum-type}}, Enum):
+    """
+    {{{description}}}{{^description}}{{{classname}}}{{/description}}
+    """
+
+    """
+    allowed enum values
+    """
+{{#allowableValues}}
+    {{#enumVars}}
+    {{{name}}} = {{{value}}}
+    {{/enumVars}}
+
+    @classmethod
+    def from_json(cls, json_str: str) -> Self:
+        """Create an instance of {{classname}} from a JSON string"""
+        return cls(json.loads(json_str))
+
+    {{! ====================================================================
+        To ensure forward-compatibility, add an `Enum._missing_` fallback that returns a catch-all
+        `UNKNOWN_DEFAULT_OPEN_API` enum case when the server sends a value
+        not recognized by the current version of the library. Without this, a new server-side enum
+        case raises `pydantic.ValidationError` (nested) or `ApiException`
+        (top-level) and breaks the entire response.
+
+        Activated only when the generator is invoked with
+        `-p enumUnknownDefaultCase=true`, which is the same flag that
+        appends the UNKNOWN_DEFAULT_OPEN_API member referenced here.
+
+        Remove this block (and the surrounding markers) once the openapi enumUnknownDefaultCase
+        option is fully implemented in the actual OpenAPI generator.
+        ==================================================================== }}
+    {{#enumUnknownDefaultCase}}
+    @classmethod
+    def _missing_(cls, value):
+        return cls.UNKNOWN_DEFAULT_OPEN_API
+    {{/enumUnknownDefaultCase}}
+    {{! ============== end enum forward-compatibility customization ================ }}
+
+    {{#defaultValue}}
+
+    #
+    @classmethod
+    def _missing_value_(cls, value):
+        if value is no_arg:
+            return cls.{{{.}}}
+    {{/defaultValue}}
+{{/allowableValues}}
