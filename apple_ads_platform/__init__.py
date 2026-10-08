@@ -170,6 +170,7 @@ __all__ = [
     "BrandsTargetingProjection",
     "BudgetSystemStatus",
     "BudgetSystemStatusReason",
+    "BulkEntityDeleteIdLong",
     "BulkItemResult",
     "BulkItemResultKeyword",
     "BulkItemResultNegativeKeyword",
@@ -264,6 +265,9 @@ __all__ = [
     "KeywordCreateBulkRequest",
     "KeywordCreateBulkRequestItem",
     "KeywordCreateBulkResponse",
+    "KeywordDeleteBulkRequest",
+    "KeywordDeleteBulkRequestItem",
+    "KeywordDeleteBulkResponse",
     "KeywordDisplayStatus",
     "KeywordInsights",
     "KeywordMatchType",
@@ -297,6 +301,9 @@ __all__ = [
     "NegativeKeywordCreateBulkRequest",
     "NegativeKeywordCreateBulkRequestItem",
     "NegativeKeywordCreateBulkResponse",
+    "NegativeKeywordDeleteBulkRequest",
+    "NegativeKeywordDeleteBulkRequestItem",
+    "NegativeKeywordDeleteBulkResponse",
     "NegativeKeywordQueryResponse",
     "NegativeKeywordResponse",
     "NegativeKeywordStatus",
@@ -560,6 +567,7 @@ from apple_ads_platform.models.brands_search_term_result_container import Brands
 from apple_ads_platform.models.brands_targeting_projection import BrandsTargetingProjection as BrandsTargetingProjection
 from apple_ads_platform.models.budget_system_status import BudgetSystemStatus as BudgetSystemStatus
 from apple_ads_platform.models.budget_system_status_reason import BudgetSystemStatusReason as BudgetSystemStatusReason
+from apple_ads_platform.models.bulk_entity_delete_id_long import BulkEntityDeleteIdLong as BulkEntityDeleteIdLong
 from apple_ads_platform.models.bulk_item_result import BulkItemResult as BulkItemResult
 from apple_ads_platform.models.bulk_item_result_keyword import BulkItemResultKeyword as BulkItemResultKeyword
 from apple_ads_platform.models.bulk_item_result_negative_keyword import BulkItemResultNegativeKeyword as BulkItemResultNegativeKeyword
@@ -654,6 +662,9 @@ from apple_ads_platform.models.keyword_create import KeywordCreate as KeywordCre
 from apple_ads_platform.models.keyword_create_bulk_request import KeywordCreateBulkRequest as KeywordCreateBulkRequest
 from apple_ads_platform.models.keyword_create_bulk_request_item import KeywordCreateBulkRequestItem as KeywordCreateBulkRequestItem
 from apple_ads_platform.models.keyword_create_bulk_response import KeywordCreateBulkResponse as KeywordCreateBulkResponse
+from apple_ads_platform.models.keyword_delete_bulk_request import KeywordDeleteBulkRequest as KeywordDeleteBulkRequest
+from apple_ads_platform.models.keyword_delete_bulk_request_item import KeywordDeleteBulkRequestItem as KeywordDeleteBulkRequestItem
+from apple_ads_platform.models.keyword_delete_bulk_response import KeywordDeleteBulkResponse as KeywordDeleteBulkResponse
 from apple_ads_platform.models.keyword_display_status import KeywordDisplayStatus as KeywordDisplayStatus
 from apple_ads_platform.models.keyword_insights import KeywordInsights as KeywordInsights
 from apple_ads_platform.models.keyword_match_type import KeywordMatchType as KeywordMatchType
@@ -687,6 +698,9 @@ from apple_ads_platform.models.negative_keyword_create import NegativeKeywordCre
 from apple_ads_platform.models.negative_keyword_create_bulk_request import NegativeKeywordCreateBulkRequest as NegativeKeywordCreateBulkRequest
 from apple_ads_platform.models.negative_keyword_create_bulk_request_item import NegativeKeywordCreateBulkRequestItem as NegativeKeywordCreateBulkRequestItem
 from apple_ads_platform.models.negative_keyword_create_bulk_response import NegativeKeywordCreateBulkResponse as NegativeKeywordCreateBulkResponse
+from apple_ads_platform.models.negative_keyword_delete_bulk_request import NegativeKeywordDeleteBulkRequest as NegativeKeywordDeleteBulkRequest
+from apple_ads_platform.models.negative_keyword_delete_bulk_request_item import NegativeKeywordDeleteBulkRequestItem as NegativeKeywordDeleteBulkRequestItem
+from apple_ads_platform.models.negative_keyword_delete_bulk_response import NegativeKeywordDeleteBulkResponse as NegativeKeywordDeleteBulkResponse
 from apple_ads_platform.models.negative_keyword_query_response import NegativeKeywordQueryResponse as NegativeKeywordQueryResponse
 from apple_ads_platform.models.negative_keyword_response import NegativeKeywordResponse as NegativeKeywordResponse
 from apple_ads_platform.models.negative_keyword_status import NegativeKeywordStatus as NegativeKeywordStatus

@@ -37,7 +37,7 @@ class SharedBudgetCreate(BaseModel):
     start_time: datetime = Field(alias="startTime")
     end_time: Optional[datetime] = Field(default=None, alias="endTime")
     value: Money
-    ad_account_ids: Annotated[List[StrictInt], Field(min_length=1, max_length=1)] = Field(alias="adAccountIds")
+    ad_account_ids: Annotated[List[StrictInt], Field(min_length=1)] = Field(alias="adAccountIds")
     invoice_detail: InvoiceDetailCreate = Field(alias="invoiceDetail")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["name", "startTime", "endTime", "value", "adAccountIds", "invoiceDetail"]

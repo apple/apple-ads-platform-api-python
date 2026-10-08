@@ -57,23 +57,11 @@ class DailyCapRecommendationHistory(BaseModel):
     impression: Optional[StrictInt] = None
     ttr: Optional[Union[StrictFloat, StrictInt]] = None
     taps: Optional[StrictInt] = None
-    expected_impressions_low: Optional[StrictInt] = Field(default=None, alias="expectedImpressionsLow")
-    expected_impressions_high: Optional[StrictInt] = Field(default=None, alias="expectedImpressionsHigh")
-    expected_impressions: Optional[StrictInt] = Field(default=None, alias="expectedImpressions")
-    expected_installs_low: Optional[StrictInt] = Field(default=None, alias="expectedInstallsLow")
-    expected_installs_high: Optional[StrictInt] = Field(default=None, alias="expectedInstallsHigh")
     expected_installs: Optional[StrictInt] = Field(default=None, alias="expectedInstalls")
-    expected_spend_low: Optional[RecommendationMoney] = Field(default=None, alias="expectedSpendLow")
-    expected_spend_high: Optional[RecommendationMoney] = Field(default=None, alias="expectedSpendHigh")
     expected_spend: Optional[RecommendationMoney] = Field(default=None, alias="expectedSpend")
-    expected_taps_low: Optional[StrictInt] = Field(default=None, alias="expectedTapsLow")
-    expected_taps_high: Optional[StrictInt] = Field(default=None, alias="expectedTapsHigh")
-    expected_taps: Optional[StrictInt] = Field(default=None, alias="expectedTaps")
-    expected_cpa_low: Optional[RecommendationMoney] = Field(default=None, alias="expectedCpaLow")
-    expected_cpa_high: Optional[RecommendationMoney] = Field(default=None, alias="expectedCpaHigh")
     expected_cpa: Optional[RecommendationMoney] = Field(default=None, alias="expectedCpa")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["recommendationId", "recommendationType", "promotedObjectId", "promotedObjectType", "campaignId", "campaignName", "state", "status", "appliedDailyBudgetAmount", "suggestedDailyBudgetAmount", "creationTime", "modificationTime", "appliedTime", "expirationTime", "rank", "installs", "spend", "averageCPA", "averageCPT", "impression", "ttr", "taps", "expectedImpressionsLow", "expectedImpressionsHigh", "expectedImpressions", "expectedInstallsLow", "expectedInstallsHigh", "expectedInstalls", "expectedSpendLow", "expectedSpendHigh", "expectedSpend", "expectedTapsLow", "expectedTapsHigh", "expectedTaps", "expectedCpaLow", "expectedCpaHigh", "expectedCpa"]
+    __properties: ClassVar[List[str]] = ["recommendationId", "recommendationType", "promotedObjectId", "promotedObjectType", "campaignId", "campaignName", "state", "status", "appliedDailyBudgetAmount", "suggestedDailyBudgetAmount", "creationTime", "modificationTime", "appliedTime", "expirationTime", "rank", "installs", "spend", "averageCPA", "averageCPT", "impression", "ttr", "taps", "expectedInstalls", "expectedSpend", "expectedCpa"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -131,21 +119,9 @@ class DailyCapRecommendationHistory(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of average_cpt
         if self.average_cpt:
             _dict['averageCPT'] = self.average_cpt.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of expected_spend_low
-        if self.expected_spend_low:
-            _dict['expectedSpendLow'] = self.expected_spend_low.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of expected_spend_high
-        if self.expected_spend_high:
-            _dict['expectedSpendHigh'] = self.expected_spend_high.to_dict()
         # override the default output from pydantic by calling `to_dict()` of expected_spend
         if self.expected_spend:
             _dict['expectedSpend'] = self.expected_spend.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of expected_cpa_low
-        if self.expected_cpa_low:
-            _dict['expectedCpaLow'] = self.expected_cpa_low.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of expected_cpa_high
-        if self.expected_cpa_high:
-            _dict['expectedCpaHigh'] = self.expected_cpa_high.to_dict()
         # override the default output from pydantic by calling `to_dict()` of expected_cpa
         if self.expected_cpa:
             _dict['expectedCpa'] = self.expected_cpa.to_dict()
@@ -188,20 +164,8 @@ class DailyCapRecommendationHistory(BaseModel):
             "impression": obj.get("impression"),
             "ttr": obj.get("ttr"),
             "taps": obj.get("taps"),
-            "expectedImpressionsLow": obj.get("expectedImpressionsLow"),
-            "expectedImpressionsHigh": obj.get("expectedImpressionsHigh"),
-            "expectedImpressions": obj.get("expectedImpressions"),
-            "expectedInstallsLow": obj.get("expectedInstallsLow"),
-            "expectedInstallsHigh": obj.get("expectedInstallsHigh"),
             "expectedInstalls": obj.get("expectedInstalls"),
-            "expectedSpendLow": RecommendationMoney.from_dict(obj["expectedSpendLow"]) if obj.get("expectedSpendLow") is not None else None,
-            "expectedSpendHigh": RecommendationMoney.from_dict(obj["expectedSpendHigh"]) if obj.get("expectedSpendHigh") is not None else None,
             "expectedSpend": RecommendationMoney.from_dict(obj["expectedSpend"]) if obj.get("expectedSpend") is not None else None,
-            "expectedTapsLow": obj.get("expectedTapsLow"),
-            "expectedTapsHigh": obj.get("expectedTapsHigh"),
-            "expectedTaps": obj.get("expectedTaps"),
-            "expectedCpaLow": RecommendationMoney.from_dict(obj["expectedCpaLow"]) if obj.get("expectedCpaLow") is not None else None,
-            "expectedCpaHigh": RecommendationMoney.from_dict(obj["expectedCpaHigh"]) if obj.get("expectedCpaHigh") is not None else None,
             "expectedCpa": RecommendationMoney.from_dict(obj["expectedCpa"]) if obj.get("expectedCpa") is not None else None
         })
         # store additional fields in additional_properties

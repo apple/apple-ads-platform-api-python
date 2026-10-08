@@ -19,8 +19,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import date
-from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt
+from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from apple_ads_platform.models.money import Money
 from typing import Optional, Set
@@ -31,7 +30,7 @@ class AppsMetrics(BaseModel):
     """
     Metrics for APPS promoted object type.
     """ # noqa: E501
-    var_date: Optional[date] = Field(default=None, description="Report date in YYYY-MM-DD format.", alias="date")
+    var_date: Optional[StrictStr] = Field(default=None, description="Report date. YYYY-MM-DD for DAILY, WEEKLY and MONTHLY granularity; YYYY-MM-DD HH for HOURLY granularity.", alias="date")
     local_spend: Optional[Money] = Field(default=None, alias="localSpend")
     impressions: Optional[StrictInt] = None
     taps: Optional[StrictInt] = None

@@ -57,8 +57,8 @@ class BrandsReportingKeyword(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['ACTIVE', 'PAUSED', 'DELETED', 'unknown_default_open_api']):
-            raise ValueError("must be one of enum values ('ACTIVE', 'PAUSED', 'DELETED', 'unknown_default_open_api')")
+        if value not in set(['ENABLED', 'PAUSED', 'DELETED', 'unknown_default_open_api']):
+            raise ValueError("must be one of enum values ('ENABLED', 'PAUSED', 'DELETED', 'unknown_default_open_api')")
         return value
 
     @field_validator('match_type')
