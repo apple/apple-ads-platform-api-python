@@ -32,7 +32,7 @@ from pydantic_core import to_jsonable_python
 
 class AppsReportingRequest(BaseModel):
     """
-    Request body for APPS promoted object type. Supported groupBy values: deviceClass, ageRange, gender, countryCode, adminArea, locality, storefront, countryOrRegion. Entity-specific groupBy restrictions apply server-side (e.g. KEYWORD and SEARCHTERM exclude ageRange, gender, countryCode, adminArea, locality). 
+    Request body for APPS promoted object type. Supported groupBy values: deviceClass, ageRange, gender, countryCode, adminArea, locality, countryOrRegion. Entity-specific groupBy restrictions apply server-side (e.g. KEYWORD and SEARCHTERM exclude ageRange, gender, countryCode, adminArea, locality). 
     """ # noqa: E501
     pagination: Optional[RequestPagination] = None
     sorting: Optional[List[Sorting]] = None
@@ -51,8 +51,8 @@ class AppsReportingRequest(BaseModel):
             return value
 
         for i in value:
-            if i not in set(['deviceClass', 'ageRange', 'gender', 'countryCode', 'adminArea', 'locality', 'storefront', 'countryOrRegion', 'unknown_default_open_api']):
-                raise ValueError("each list item must be one of ('deviceClass', 'ageRange', 'gender', 'countryCode', 'adminArea', 'locality', 'storefront', 'countryOrRegion', 'unknown_default_open_api')")
+            if i not in set(['deviceClass', 'ageRange', 'gender', 'countryCode', 'adminArea', 'locality', 'countryOrRegion', 'unknown_default_open_api']):
+                raise ValueError("each list item must be one of ('deviceClass', 'ageRange', 'gender', 'countryCode', 'adminArea', 'locality', 'countryOrRegion', 'unknown_default_open_api')")
         return value
 
     model_config = ConfigDict(

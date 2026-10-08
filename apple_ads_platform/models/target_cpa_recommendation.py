@@ -50,10 +50,6 @@ class TargetCpaRecommendation(BaseModel):
     expiration_time: Optional[datetime] = Field(default=None, alias="expirationTime")
     average_cpt: Optional[RecommendationMoney] = Field(default=None, alias="averageCPT")
     average_cpa: Optional[RecommendationMoney] = Field(default=None, alias="averageCPA")
-    expected_taps: Optional[StrictInt] = Field(default=None, description="Expected tap count", alias="expectedTaps")
-    expected_cpa: Optional[RecommendationMoney] = Field(default=None, alias="expectedCPA")
-    expected_installs: Optional[StrictInt] = Field(default=None, description="Expected install count", alias="expectedInstalls")
-    expected_spend: Optional[RecommendationMoney] = Field(default=None, alias="expectedSpend")
     impression: Optional[StrictInt] = Field(default=None, description="Historical impression count")
     installs: Optional[StrictInt] = Field(default=None, description="Historical install count")
     spend: Optional[RecommendationMoney] = None
@@ -61,7 +57,7 @@ class TargetCpaRecommendation(BaseModel):
     taps: Optional[StrictInt] = Field(default=None, description="Historical tap count")
     ttr: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Tap-through rate")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["id", "state", "status", "promotedObjectId", "promotedObjectType", "recommendationType", "campaignId", "campaignName", "bidStrategy", "creationTime", "modificationTime", "expirationTime", "averageCPT", "averageCPA", "expectedTaps", "expectedCPA", "expectedInstalls", "expectedSpend", "impression", "installs", "spend", "recommendedTargetCPA", "taps", "ttr"]
+    __properties: ClassVar[List[str]] = ["id", "state", "status", "promotedObjectId", "promotedObjectType", "recommendationType", "campaignId", "campaignName", "bidStrategy", "creationTime", "modificationTime", "expirationTime", "averageCPT", "averageCPA", "impression", "installs", "spend", "recommendedTargetCPA", "taps", "ttr"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -113,12 +109,6 @@ class TargetCpaRecommendation(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of average_cpa
         if self.average_cpa:
             _dict['averageCPA'] = self.average_cpa.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of expected_cpa
-        if self.expected_cpa:
-            _dict['expectedCPA'] = self.expected_cpa.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of expected_spend
-        if self.expected_spend:
-            _dict['expectedSpend'] = self.expected_spend.to_dict()
         # override the default output from pydantic by calling `to_dict()` of spend
         if self.spend:
             _dict['spend'] = self.spend.to_dict()
@@ -156,10 +146,6 @@ class TargetCpaRecommendation(BaseModel):
             "expirationTime": obj.get("expirationTime"),
             "averageCPT": RecommendationMoney.from_dict(obj["averageCPT"]) if obj.get("averageCPT") is not None else None,
             "averageCPA": RecommendationMoney.from_dict(obj["averageCPA"]) if obj.get("averageCPA") is not None else None,
-            "expectedTaps": obj.get("expectedTaps"),
-            "expectedCPA": RecommendationMoney.from_dict(obj["expectedCPA"]) if obj.get("expectedCPA") is not None else None,
-            "expectedInstalls": obj.get("expectedInstalls"),
-            "expectedSpend": RecommendationMoney.from_dict(obj["expectedSpend"]) if obj.get("expectedSpend") is not None else None,
             "impression": obj.get("impression"),
             "installs": obj.get("installs"),
             "spend": RecommendationMoney.from_dict(obj["spend"]) if obj.get("spend") is not None else None,

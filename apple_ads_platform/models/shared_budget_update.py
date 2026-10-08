@@ -37,7 +37,7 @@ class SharedBudgetUpdate(BaseModel):
     start_time: Optional[datetime] = Field(default=None, alias="startTime")
     end_time: Optional[datetime] = Field(default=None, alias="endTime")
     value: Optional[Money] = None
-    ad_account_ids: Optional[List[StrictInt]] = Field(default=None, alias="adAccountIds")
+    ad_account_ids: Optional[Annotated[List[StrictInt], Field(min_length=1)]] = Field(default=None, alias="adAccountIds")
     invoice_detail: Optional[InvoiceDetailUpdate] = Field(default=None, alias="invoiceDetail")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["name", "startTime", "endTime", "value", "adAccountIds", "invoiceDetail"]

@@ -57,12 +57,8 @@ class TargetCpaRecommendationHistory(BaseModel):
     impression: Optional[StrictInt] = None
     ttr: Optional[Union[StrictFloat, StrictInt]] = None
     taps: Optional[StrictInt] = None
-    expected_installs: Optional[StrictInt] = Field(default=None, alias="expectedInstalls")
-    expected_spend: Optional[RecommendationMoney] = Field(default=None, alias="expectedSpend")
-    expected_taps: Optional[StrictInt] = Field(default=None, alias="expectedTaps")
-    expected_cpa: Optional[RecommendationMoney] = Field(default=None, alias="expectedCPA")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["recommendationId", "recommendationType", "promotedObjectId", "promotedObjectType", "campaignId", "campaignName", "state", "status", "appliedTargetCPA", "recommendedTargetCPA", "creationTime", "modificationTime", "appliedTime", "expirationTime", "rank", "installs", "spend", "averageCPA", "averageCPT", "impression", "ttr", "taps", "expectedInstalls", "expectedSpend", "expectedTaps", "expectedCPA"]
+    __properties: ClassVar[List[str]] = ["recommendationId", "recommendationType", "promotedObjectId", "promotedObjectType", "campaignId", "campaignName", "state", "status", "appliedTargetCPA", "recommendedTargetCPA", "creationTime", "modificationTime", "appliedTime", "expirationTime", "rank", "installs", "spend", "averageCPA", "averageCPT", "impression", "ttr", "taps"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -120,12 +116,6 @@ class TargetCpaRecommendationHistory(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of average_cpt
         if self.average_cpt:
             _dict['averageCPT'] = self.average_cpt.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of expected_spend
-        if self.expected_spend:
-            _dict['expectedSpend'] = self.expected_spend.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of expected_cpa
-        if self.expected_cpa:
-            _dict['expectedCPA'] = self.expected_cpa.to_dict()
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -164,11 +154,7 @@ class TargetCpaRecommendationHistory(BaseModel):
             "averageCPT": RecommendationMoney.from_dict(obj["averageCPT"]) if obj.get("averageCPT") is not None else None,
             "impression": obj.get("impression"),
             "ttr": obj.get("ttr"),
-            "taps": obj.get("taps"),
-            "expectedInstalls": obj.get("expectedInstalls"),
-            "expectedSpend": RecommendationMoney.from_dict(obj["expectedSpend"]) if obj.get("expectedSpend") is not None else None,
-            "expectedTaps": obj.get("expectedTaps"),
-            "expectedCPA": RecommendationMoney.from_dict(obj["expectedCPA"]) if obj.get("expectedCPA") is not None else None
+            "taps": obj.get("taps")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

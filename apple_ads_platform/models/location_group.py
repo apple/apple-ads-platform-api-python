@@ -41,15 +41,14 @@ class LocationGroup(BaseModel):
     name: StrictStr
     group_type: LocationGroupType = Field(alias="groupType")
     system_status: Optional[StrictStr] = Field(default=None, description="System-managed status. PENDING = awaiting BC evaluation (e.g., after rules change). VALID = BC confirmed membership. INVALID = BC evaluation failed. ", alias="systemStatus")
-    query: Optional[StrictStr] = Field(default=None, description="RSQL query for DYNAMIC type (read-only, generated from rules)")
-    rules: Optional[List[Rule]] = Field(default=None, description="Structured rules for DYNAMIC groups. Converted to RSQL `query` on the server. Supported fields: adminArea, locality, postalCode, locationId. Operators: EQUALS, NOT_EQUALS (single value), IN, NOT_IN (multi-value with `value` array). ")
+    rules: Optional[List[Rule]] = Field(default=None, description="Structured rules for DYNAMIC groups. Converted to RSQL on the server. Supported fields: adminArea, locality, postalCode, locationId. Operators: EQUALS, NOT_EQUALS (single value), IN, NOT_IN (multi-value with `value` array). ")
     location_ids: Optional[List[StrictStr]] = Field(default=None, description="Location identifiers for STATIC type", alias="locationIds")
     is_all_locations_group: Optional[StrictBool] = Field(default=None, description="True for the system-created \"All Locations\" group (read-only)", alias="isAllLocationsGroup")
     description: Optional[StrictStr] = None
     group_total: StrictInt = Field(description="Total number of locations in the group (output only)", alias="groupTotal")
     eligibility: Optional[Eligibility] = None
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["id", "creationTime", "modificationTime", "brandId", "adAccountId", "name", "groupType", "systemStatus", "query", "rules", "locationIds", "isAllLocationsGroup", "description", "groupTotal", "eligibility"]
+    __properties: ClassVar[List[str]] = ["id", "creationTime", "modificationTime", "brandId", "adAccountId", "name", "groupType", "systemStatus", "rules", "locationIds", "isAllLocationsGroup", "description", "groupTotal", "eligibility"]
 
     @field_validator('system_status')
     def system_status_validate_enum(cls, value):
@@ -153,7 +152,6 @@ class LocationGroup(BaseModel):
             "name": obj.get("name"),
             "groupType": obj.get("groupType"),
             "systemStatus": obj.get("systemStatus"),
-            "query": obj.get("query"),
             "rules": [Rule.from_dict(_item) for _item in obj["rules"]] if obj.get("rules") is not None else None,
             "locationIds": obj.get("locationIds"),
             "isAllLocationsGroup": obj.get("isAllLocationsGroup"),

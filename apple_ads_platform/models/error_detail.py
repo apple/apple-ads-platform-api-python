@@ -31,8 +31,9 @@ class ErrorDetail(BaseModel):
     """ # noqa: E501
     code: StrictStr
     message: Optional[StrictStr] = None
+    info: Optional[Dict[str, Any]] = None
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["code", "message"]
+    __properties: ClassVar[List[str]] = ["code", "message", "info"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -98,7 +99,8 @@ class ErrorDetail(BaseModel):
 
         _obj = cls.model_validate({
             "code": obj.get("code"),
-            "message": obj.get("message")
+            "message": obj.get("message"),
+            "info": obj.get("info")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

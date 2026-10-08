@@ -38,6 +38,7 @@ class DailyCapRecommendation(BaseModel):
     """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="Unique recommendation identifier")
     recommendation_type: Optional[RecommendationCategory] = Field(default=None, alias="recommendationType")
+    ad_account_id: Optional[StrictInt] = Field(default=None, description="The ad account this recommendation belongs to.", alias="adAccountId")
     promoted_object_id: Optional[StrictStr] = Field(default=None, description="Campaign identifier", alias="promotedObjectId")
     promoted_object_type: Optional[PromotedObjectType] = Field(default=None, alias="promotedObjectType")
     campaign_id: Optional[StrictInt] = Field(default=None, description="Campaign ID", alias="campaignId")
@@ -56,14 +57,12 @@ class DailyCapRecommendation(BaseModel):
     impression: Optional[StrictInt] = Field(default=None, description="Historical impression count")
     ttr: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Tap-through rate")
     taps: Optional[StrictInt] = Field(default=None, description="Historical tap count")
-    expected_impressions: Optional[StrictInt] = Field(default=None, alias="expectedImpressions")
     expected_installs: Optional[StrictInt] = Field(default=None, alias="expectedInstalls")
     expected_spend: Optional[RecommendationMoney] = Field(default=None, alias="expectedSpend")
-    expected_taps: Optional[StrictInt] = Field(default=None, alias="expectedTaps")
     expected_cpa: Optional[RecommendationMoney] = Field(default=None, alias="expectedCpa")
     bid_strategy: Optional[RecommendationBidStrategy] = Field(default=None, alias="bidStrategy")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["id", "recommendationType", "promotedObjectId", "promotedObjectType", "campaignId", "campaignName", "suggestedDailyBudgetAmount", "dailyBudget", "state", "status", "creationTime", "modificationTime", "expirationTime", "installs", "spend", "averageCPA", "averageCPT", "impression", "ttr", "taps", "expectedImpressions", "expectedInstalls", "expectedSpend", "expectedTaps", "expectedCpa", "bidStrategy"]
+    __properties: ClassVar[List[str]] = ["id", "recommendationType", "adAccountId", "promotedObjectId", "promotedObjectType", "campaignId", "campaignName", "suggestedDailyBudgetAmount", "dailyBudget", "state", "status", "creationTime", "modificationTime", "expirationTime", "installs", "spend", "averageCPA", "averageCPT", "impression", "ttr", "taps", "expectedInstalls", "expectedSpend", "expectedCpa", "bidStrategy"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -149,6 +148,7 @@ class DailyCapRecommendation(BaseModel):
         _obj = cls.model_validate({
             "id": obj.get("id"),
             "recommendationType": obj.get("recommendationType"),
+            "adAccountId": obj.get("adAccountId"),
             "promotedObjectId": obj.get("promotedObjectId"),
             "promotedObjectType": obj.get("promotedObjectType"),
             "campaignId": obj.get("campaignId"),
@@ -167,10 +167,8 @@ class DailyCapRecommendation(BaseModel):
             "impression": obj.get("impression"),
             "ttr": obj.get("ttr"),
             "taps": obj.get("taps"),
-            "expectedImpressions": obj.get("expectedImpressions"),
             "expectedInstalls": obj.get("expectedInstalls"),
             "expectedSpend": RecommendationMoney.from_dict(obj["expectedSpend"]) if obj.get("expectedSpend") is not None else None,
-            "expectedTaps": obj.get("expectedTaps"),
             "expectedCpa": RecommendationMoney.from_dict(obj["expectedCpa"]) if obj.get("expectedCpa") is not None else None,
             "bidStrategy": RecommendationBidStrategy.from_dict(obj["bidStrategy"]) if obj.get("bidStrategy") is not None else None
         })

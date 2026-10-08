@@ -35,7 +35,7 @@ class LocationGroupCreate(BaseModel):
     brand_id: StrictStr = Field(alias="brandId")
     ad_account_id: StrictStr = Field(alias="adAccountId")
     group_type: LocationGroupType = Field(alias="groupType")
-    rules: Optional[List[Rule]] = Field(default=None, description="Structured rules for DYNAMIC groups. Use instead of raw `query`. Supported fields: adminArea, locality, postalCode, locationId. Operators: EQUALS, NOT_EQUALS, IN, NOT_IN. Use `value` for all operators (string for EQUALS/NOT_EQUALS, array for IN/NOT_IN). ")
+    rules: Optional[List[Rule]] = Field(default=None, description="Structured rules for DYNAMIC groups. Supported fields: adminArea, locality, postalCode, locationId. Operators: EQUALS, NOT_EQUALS, IN, NOT_IN. Use `value` for all operators (string for EQUALS/NOT_EQUALS, array for IN/NOT_IN). ")
     location_ids: Optional[List[StrictStr]] = Field(default=None, description="Location identifiers for STATIC type", alias="locationIds")
     description: Optional[StrictStr] = None
     additional_properties: Dict[str, Any] = {}

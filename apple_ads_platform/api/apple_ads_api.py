@@ -81,6 +81,8 @@ from apple_ads_platform.models.impression_share_query_response import Impression
 from apple_ads_platform.models.keyword_create import KeywordCreate
 from apple_ads_platform.models.keyword_create_bulk_request import KeywordCreateBulkRequest
 from apple_ads_platform.models.keyword_create_bulk_response import KeywordCreateBulkResponse
+from apple_ads_platform.models.keyword_delete_bulk_request import KeywordDeleteBulkRequest
+from apple_ads_platform.models.keyword_delete_bulk_response import KeywordDeleteBulkResponse
 from apple_ads_platform.models.keyword_query_response import KeywordQueryResponse
 from apple_ads_platform.models.keyword_response import KeywordResponse
 from apple_ads_platform.models.keyword_update import KeywordUpdate
@@ -97,6 +99,8 @@ from apple_ads_platform.models.me_response import MeResponse
 from apple_ads_platform.models.negative_keyword_create import NegativeKeywordCreate
 from apple_ads_platform.models.negative_keyword_create_bulk_request import NegativeKeywordCreateBulkRequest
 from apple_ads_platform.models.negative_keyword_create_bulk_response import NegativeKeywordCreateBulkResponse
+from apple_ads_platform.models.negative_keyword_delete_bulk_request import NegativeKeywordDeleteBulkRequest
+from apple_ads_platform.models.negative_keyword_delete_bulk_response import NegativeKeywordDeleteBulkResponse
 from apple_ads_platform.models.negative_keyword_query_response import NegativeKeywordQueryResponse
 from apple_ads_platform.models.negative_keyword_response import NegativeKeywordResponse
 from apple_ads_platform.models.negative_keyword_update import NegativeKeywordUpdate
@@ -4726,7 +4730,7 @@ class AppleAdsApi:
     ) -> AppsAdGroupReportResponse:
         """Get app ad group reports
 
-        Retrieve reporting data for ad groups. **groupBy (APPS):** deviceClass, ageRange, gender, countryCode, adminArea, locality, storefront, countryOrRegion **HOURLY granularity** requires the date range to start within the last 7 days. **WEEKLY granularity** requires the end date to be at least 14 days in the past. **MONTHLY granularity** requires the end date to be at least 90 days in the past. 
+        Retrieve reporting data for ad groups. **groupBy (APPS):** deviceClass, ageRange, gender, countryCode, adminArea, locality, countryOrRegion **HOURLY granularity** requires the date range to start within the last 7 days. **WEEKLY granularity** requires the end date to be at least 14 days in the past. **MONTHLY granularity** requires the end date to be at least 90 days in the past. 
 
         :param x_ap_context: (required)
         :type x_ap_context: str
@@ -4803,7 +4807,7 @@ class AppleAdsApi:
     ) -> ApiResponse[AppsAdGroupReportResponse]:
         """Get app ad group reports
 
-        Retrieve reporting data for ad groups. **groupBy (APPS):** deviceClass, ageRange, gender, countryCode, adminArea, locality, storefront, countryOrRegion **HOURLY granularity** requires the date range to start within the last 7 days. **WEEKLY granularity** requires the end date to be at least 14 days in the past. **MONTHLY granularity** requires the end date to be at least 90 days in the past. 
+        Retrieve reporting data for ad groups. **groupBy (APPS):** deviceClass, ageRange, gender, countryCode, adminArea, locality, countryOrRegion **HOURLY granularity** requires the date range to start within the last 7 days. **WEEKLY granularity** requires the end date to be at least 14 days in the past. **MONTHLY granularity** requires the end date to be at least 90 days in the past. 
 
         :param x_ap_context: (required)
         :type x_ap_context: str
@@ -4880,7 +4884,7 @@ class AppleAdsApi:
     ) -> RESTResponseType:
         """Get app ad group reports
 
-        Retrieve reporting data for ad groups. **groupBy (APPS):** deviceClass, ageRange, gender, countryCode, adminArea, locality, storefront, countryOrRegion **HOURLY granularity** requires the date range to start within the last 7 days. **WEEKLY granularity** requires the end date to be at least 14 days in the past. **MONTHLY granularity** requires the end date to be at least 90 days in the past. 
+        Retrieve reporting data for ad groups. **groupBy (APPS):** deviceClass, ageRange, gender, countryCode, adminArea, locality, countryOrRegion **HOURLY granularity** requires the date range to start within the last 7 days. **WEEKLY granularity** requires the end date to be at least 14 days in the past. **MONTHLY granularity** requires the end date to be at least 90 days in the past. 
 
         :param x_ap_context: (required)
         :type x_ap_context: str
@@ -5338,7 +5342,7 @@ class AppleAdsApi:
     ) -> AppsCampaignReportResponse:
         """Get app campaign reports
 
-        Retrieve reporting data for campaigns. **groupBy (APPS):** deviceClass, ageRange, gender, countryCode, adminArea, locality, storefront, countryOrRegion **HOURLY granularity** requires the date range to start within the last 7 days. **WEEKLY granularity** requires the end date to be at least 14 days in the past. **MONTHLY granularity** requires the end date to be at least 90 days in the past. 
+        Retrieve reporting data for campaigns. **groupBy (APPS):** deviceClass, ageRange, gender, countryCode, adminArea, locality, countryOrRegion **HOURLY granularity** requires the date range to start within the last 7 days. **WEEKLY granularity** requires the end date to be at least 14 days in the past. **MONTHLY granularity** requires the end date to be at least 90 days in the past. 
 
         :param x_ap_context: (required)
         :type x_ap_context: str
@@ -5415,7 +5419,7 @@ class AppleAdsApi:
     ) -> ApiResponse[AppsCampaignReportResponse]:
         """Get app campaign reports
 
-        Retrieve reporting data for campaigns. **groupBy (APPS):** deviceClass, ageRange, gender, countryCode, adminArea, locality, storefront, countryOrRegion **HOURLY granularity** requires the date range to start within the last 7 days. **WEEKLY granularity** requires the end date to be at least 14 days in the past. **MONTHLY granularity** requires the end date to be at least 90 days in the past. 
+        Retrieve reporting data for campaigns. **groupBy (APPS):** deviceClass, ageRange, gender, countryCode, adminArea, locality, countryOrRegion **HOURLY granularity** requires the date range to start within the last 7 days. **WEEKLY granularity** requires the end date to be at least 14 days in the past. **MONTHLY granularity** requires the end date to be at least 90 days in the past. 
 
         :param x_ap_context: (required)
         :type x_ap_context: str
@@ -5492,7 +5496,7 @@ class AppleAdsApi:
     ) -> RESTResponseType:
         """Get app campaign reports
 
-        Retrieve reporting data for campaigns. **groupBy (APPS):** deviceClass, ageRange, gender, countryCode, adminArea, locality, storefront, countryOrRegion **HOURLY granularity** requires the date range to start within the last 7 days. **WEEKLY granularity** requires the end date to be at least 14 days in the past. **MONTHLY granularity** requires the end date to be at least 90 days in the past. 
+        Retrieve reporting data for campaigns. **groupBy (APPS):** deviceClass, ageRange, gender, countryCode, adminArea, locality, countryOrRegion **HOURLY granularity** requires the date range to start within the last 7 days. **WEEKLY granularity** requires the end date to be at least 14 days in the past. **MONTHLY granularity** requires the end date to be at least 90 days in the past. 
 
         :param x_ap_context: (required)
         :type x_ap_context: str
@@ -17012,6 +17016,312 @@ class AppleAdsApi:
 
 
     @validate_call
+    def keywords_bulk_delete_post(
+        self,
+        x_ap_context: StrictStr,
+        keyword_delete_bulk_request: Optional[KeywordDeleteBulkRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> KeywordDeleteBulkResponse:
+        """keywords_bulk_delete_post
+
+        BulkDelete for keywords
+
+        :param x_ap_context: (required)
+        :type x_ap_context: str
+        :param keyword_delete_bulk_request:
+        :type keyword_delete_bulk_request: KeywordDeleteBulkRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._keywords_bulk_delete_post_serialize(
+            x_ap_context=x_ap_context,
+            keyword_delete_bulk_request=keyword_delete_bulk_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "KeywordDeleteBulkResponse",
+            '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '429': "ErrorResponse",
+            '500': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def keywords_bulk_delete_post_with_http_info(
+        self,
+        x_ap_context: StrictStr,
+        keyword_delete_bulk_request: Optional[KeywordDeleteBulkRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[KeywordDeleteBulkResponse]:
+        """keywords_bulk_delete_post
+
+        BulkDelete for keywords
+
+        :param x_ap_context: (required)
+        :type x_ap_context: str
+        :param keyword_delete_bulk_request:
+        :type keyword_delete_bulk_request: KeywordDeleteBulkRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._keywords_bulk_delete_post_serialize(
+            x_ap_context=x_ap_context,
+            keyword_delete_bulk_request=keyword_delete_bulk_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "KeywordDeleteBulkResponse",
+            '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '429': "ErrorResponse",
+            '500': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def keywords_bulk_delete_post_without_preload_content(
+        self,
+        x_ap_context: StrictStr,
+        keyword_delete_bulk_request: Optional[KeywordDeleteBulkRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """keywords_bulk_delete_post
+
+        BulkDelete for keywords
+
+        :param x_ap_context: (required)
+        :type x_ap_context: str
+        :param keyword_delete_bulk_request:
+        :type keyword_delete_bulk_request: KeywordDeleteBulkRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._keywords_bulk_delete_post_serialize(
+            x_ap_context=x_ap_context,
+            keyword_delete_bulk_request=keyword_delete_bulk_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "KeywordDeleteBulkResponse",
+            '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '429': "ErrorResponse",
+            '500': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _keywords_bulk_delete_post_serialize(
+        self,
+        x_ap_context,
+        keyword_delete_bulk_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        if x_ap_context is not None:
+            _header_params['X-Ap-Context'] = x_ap_context
+        # process the form parameters
+        # process the body parameter
+        if keyword_delete_bulk_request is not None:
+            _body_params = keyword_delete_bulk_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/keywords/bulk-delete',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def keywords_bulk_update_post(
         self,
         x_ap_context: StrictStr,
@@ -19127,6 +19437,312 @@ class AppleAdsApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/negative-keywords/bulk-create',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def negative_keywords_bulk_delete_post(
+        self,
+        x_ap_context: StrictStr,
+        negative_keyword_delete_bulk_request: Optional[NegativeKeywordDeleteBulkRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> NegativeKeywordDeleteBulkResponse:
+        """negative_keywords_bulk_delete_post
+
+        BulkDelete for negative-keywords
+
+        :param x_ap_context: (required)
+        :type x_ap_context: str
+        :param negative_keyword_delete_bulk_request:
+        :type negative_keyword_delete_bulk_request: NegativeKeywordDeleteBulkRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._negative_keywords_bulk_delete_post_serialize(
+            x_ap_context=x_ap_context,
+            negative_keyword_delete_bulk_request=negative_keyword_delete_bulk_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "NegativeKeywordDeleteBulkResponse",
+            '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '429': "ErrorResponse",
+            '500': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def negative_keywords_bulk_delete_post_with_http_info(
+        self,
+        x_ap_context: StrictStr,
+        negative_keyword_delete_bulk_request: Optional[NegativeKeywordDeleteBulkRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[NegativeKeywordDeleteBulkResponse]:
+        """negative_keywords_bulk_delete_post
+
+        BulkDelete for negative-keywords
+
+        :param x_ap_context: (required)
+        :type x_ap_context: str
+        :param negative_keyword_delete_bulk_request:
+        :type negative_keyword_delete_bulk_request: NegativeKeywordDeleteBulkRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._negative_keywords_bulk_delete_post_serialize(
+            x_ap_context=x_ap_context,
+            negative_keyword_delete_bulk_request=negative_keyword_delete_bulk_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "NegativeKeywordDeleteBulkResponse",
+            '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '429': "ErrorResponse",
+            '500': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def negative_keywords_bulk_delete_post_without_preload_content(
+        self,
+        x_ap_context: StrictStr,
+        negative_keyword_delete_bulk_request: Optional[NegativeKeywordDeleteBulkRequest] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """negative_keywords_bulk_delete_post
+
+        BulkDelete for negative-keywords
+
+        :param x_ap_context: (required)
+        :type x_ap_context: str
+        :param negative_keyword_delete_bulk_request:
+        :type negative_keyword_delete_bulk_request: NegativeKeywordDeleteBulkRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._negative_keywords_bulk_delete_post_serialize(
+            x_ap_context=x_ap_context,
+            negative_keyword_delete_bulk_request=negative_keyword_delete_bulk_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "NegativeKeywordDeleteBulkResponse",
+            '400': "ErrorResponse",
+            '401': "ErrorResponse",
+            '403': "ErrorResponse",
+            '404': "ErrorResponse",
+            '429': "ErrorResponse",
+            '500': "ErrorResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _negative_keywords_bulk_delete_post_serialize(
+        self,
+        x_ap_context,
+        negative_keyword_delete_bulk_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        if x_ap_context is not None:
+            _header_params['X-Ap-Context'] = x_ap_context
+        # process the form parameters
+        # process the body parameter
+        if negative_keyword_delete_bulk_request is not None:
+            _body_params = negative_keyword_delete_bulk_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/negative-keywords/bulk-delete',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
